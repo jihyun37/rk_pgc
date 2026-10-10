@@ -1,13 +1,9 @@
 import Image from "next/image";
-import SiteLink from "@/components/SiteLink";
 import ContactCta from "@/components/ContactCta";
 import Hero from "@/components/Hero";
 import HomeHighlightsSlider from "@/components/HomeHighlightsSlider";
 import { ArrowLink, Container, SectionLabel } from "@/components/ui";
-import { businessRoom, guestRoom } from "@/content/rooms";
 import { directions, intro, roomUseCases, site } from "@/content/site";
-
-const rooms = [businessRoom, guestRoom];
 
 function UseCaseIcon({ title }: { title: string }) {
   const common = {
@@ -85,23 +81,6 @@ export default function Home() {
           </div>
 
           <HomeHighlightsSlider />
-
-          <div className="mt-14 grid gap-8 sm:grid-cols-2 md:mt-20 md:gap-10">
-            {rooms.map((room) => (
-              <SiteLink key={room.slug} href={`/${room.slug}`} className="group block">
-                <div className="flex items-baseline justify-between gap-4 border-t border-charcoal/20 pt-5">
-                  <div>
-                    <p className="text-[11px] uppercase tracking-[0.24em] text-warm-gray">PGC {room.number}</p>
-                    <h3 className="mt-2 font-serif text-[32px] font-light leading-tight md:text-[42px]">{room.name}</h3>
-                    <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-charcoal/70">{room.tagline}</p>
-                  </div>
-                  <span className="grid size-11 shrink-0 place-items-center rounded-full bg-charcoal text-white transition-transform group-hover:translate-x-1" aria-hidden>
-                    →
-                  </span>
-                </div>
-              </SiteLink>
-            ))}
-          </div>
         </Container>
       </section>
 
@@ -115,7 +94,7 @@ export default function Home() {
           </div>
           <div className="mt-12 grid gap-x-10 md:mt-16 md:grid-cols-2">
             {roomUseCases.map((useCase, index) => (
-              <SiteLink
+              <a
                 key={useCase.title}
                 href={useCase.href}
                 className="reveal group border-t border-charcoal/20 py-7 md:py-9"
@@ -129,7 +108,7 @@ export default function Home() {
                   <span className="shrink-0 text-[11px] uppercase tracking-[0.18em] text-warm-gray">PGC {useCase.room}</span>
                 </div>
                 <p className="mt-4 max-w-xl text-[15px] leading-[1.85] text-charcoal/70">{useCase.body}</p>
-              </SiteLink>
+              </a>
             ))}
           </div>
         </Container>
