@@ -7,7 +7,7 @@ import type { Room } from "@/content/rooms";
 
 function RoomFactIcon({ label }: { label: string }) {
   const common = {
-    className: "size-5 text-warm-gray",
+    className: "size-8 text-warm-gray",
     fill: "none",
     stroke: "currentColor",
     strokeWidth: 1.4,

@@ -2,6 +2,7 @@ import Image from "next/image";
 import SiteLink from "@/components/SiteLink";
 import ContactCta from "@/components/ContactCta";
 import Hero from "@/components/Hero";
+import HomeHighlightsSlider from "@/components/HomeHighlightsSlider";
 import { ArrowLink, Container, SectionLabel } from "@/components/ui";
 import { businessRoom, guestRoom } from "@/content/rooms";
 import { directions, intro, roomUseCases, site } from "@/content/site";
@@ -82,6 +83,8 @@ export default function Home() {
               One Business Experience.
             </h2>
           </div>
+
+          <HomeHighlightsSlider />
 
           <div className="mt-14 grid gap-8 sm:grid-cols-2 md:mt-20 md:gap-10">
             {rooms.map((room, index) => (
