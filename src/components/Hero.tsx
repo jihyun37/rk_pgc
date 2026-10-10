@@ -44,6 +44,7 @@ export default function Hero() {
   const activeSlide = slides[activeIndex];
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const timer = window.setInterval(() => {
       setActiveIndex((index) => (index + 1) % slides.length);
     }, 3500);
