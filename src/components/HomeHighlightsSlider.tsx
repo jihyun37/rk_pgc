@@ -2,51 +2,17 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { homeHighlights } from "@/content/highlights";
 import { ArrowLink } from "./ui";
-
-const slides = [
-  {
-    image: "/images/building-205-street.jpg",
-    alt: "Building 205 at Pangyo Global Campus",
-    label: "The Campus",
-    title: "Building 205",
-    headline: "Nature and terrace living, in Daejang-dong.",
-    description: "An upscale terrace residence within TH212 Pangyo, surrounded by greenery and seasonal gardens, just minutes from Pangyo's business district.",
-    href: "/about",
-    linkLabel: "View More",
-  },
-  {
-    image: "/images/403-hero.jpg",
-    alt: "PGC 403 Business Room lounge",
-    label: "Room 403",
-    title: "Business Room",
-    headline: "Designed for meetings, work and networking.",
-    description: "A refined setting for business meetings, private gatherings, and meaningful connections, bringing work and relaxation together.",
-    facts: "5 guests · 5 beds · 1 bathroom",
-    href: "/business-room",
-    linkLabel: "View More",
-  },
-  {
-    image: "/images/404-hero.jpg",
-    alt: "PGC 404 Guest Room lounge",
-    label: "Room 404",
-    title: "Guest Room",
-    headline: "Designed for comfort, rest and privacy.",
-    description: "A welcoming residence for visiting executives, employees, and guests, with room to relax and recharge between plans.",
-    facts: "10 guests max · 9 beds · 2 bathrooms",
-    href: "/guest-room",
-    linkLabel: "View More",
-  },
-];
 
 export default function HomeHighlightsSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const activeSlide = slides[activeIndex];
+  const activeSlide = homeHighlights[activeIndex];
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const timer = window.setInterval(() => {
-      setActiveIndex((index) => (index + 1) % slides.length);
+      setActiveIndex((index) => (index + 1) % homeHighlights.length);
     }, 3500);
     return () => window.clearInterval(timer);
   }, []);
@@ -54,7 +20,7 @@ export default function HomeHighlightsSlider() {
   return (
     <section className="mt-14 grid min-h-[560px] overflow-hidden bg-charcoal text-white lg:min-h-[640px] lg:grid-cols-2" aria-label="Pangyo Global Campus highlights">
       <div className="relative min-h-[320px] bg-charcoal lg:min-h-[640px]">
-        {slides.map((slide, index) => (
+        {homeHighlights.map((slide, index) => (
           <Image
             key={slide.image}
             src={slide.image}
@@ -90,7 +56,7 @@ export default function HomeHighlightsSlider() {
         </div>
 
         <div className="mt-10 flex gap-3 lg:absolute lg:right-8 lg:top-1/2 lg:mt-0 lg:-translate-y-1/2 lg:flex-col" aria-label="Choose a highlight">
-          {slides.map((slide, index) => (
+          {homeHighlights.map((slide, index) => (
             <button
               key={slide.label}
               type="button"
