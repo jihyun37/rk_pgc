@@ -87,19 +87,9 @@ export default function Home() {
           <HomeHighlightsSlider />
 
           <div className="mt-14 grid gap-8 sm:grid-cols-2 md:mt-20 md:gap-10">
-            {rooms.map((room, index) => (
+            {rooms.map((room) => (
               <SiteLink key={room.slug} href={`/${room.slug}`} className="group block">
-                <div className="reveal-img relative aspect-[4/3] overflow-hidden bg-beige" style={{ "--delay": `${index * 120}ms` } as React.CSSProperties}>
-                  <Image
-                    src={room.living.src}
-                    alt={room.living.alt}
-                    fill
-                    sizes="(min-width: 640px) 50vw, 100vw"
-                    className="object-contain transition-transform duration-1000 group-hover:scale-[1.025]"
-                    style={{ objectPosition: "50% 55%" }}
-                  />
-                </div>
-                <div className="mt-6 flex items-baseline justify-between gap-4 border-t border-charcoal/20 pt-5">
+                <div className="flex items-baseline justify-between gap-4 border-t border-charcoal/20 pt-5">
                   <div>
                     <p className="text-[11px] uppercase tracking-[0.24em] text-warm-gray">PGC {room.number}</p>
                     <h3 className="mt-2 font-serif text-[32px] font-light leading-tight md:text-[42px]">{room.name}</h3>
