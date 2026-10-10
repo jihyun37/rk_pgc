@@ -1,0 +1,166 @@
+import Image from "next/image";
+import SiteLink from "@/components/SiteLink";
+import ContactCta from "@/components/ContactCta";
+import Hero from "@/components/Hero";
+import { ArrowLink, Container, SectionLabel } from "@/components/ui";
+import { businessRoom, guestRoom } from "@/content/rooms";
+import { directions, intro, roomUseCases, site } from "@/content/site";
+
+const rooms = [businessRoom, guestRoom];
+
+export default function Home() {
+  return (
+    <>
+      <Hero />
+
+      <section id="about" className="relative overflow-hidden bg-warm-white py-28 md:py-44">
+        <svg
+          className="pointer-events-none absolute -left-40 top-1/2 hidden size-[640px] -translate-y-1/2 text-line md:block"
+          viewBox="0 0 100 100"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.15"
+          aria-hidden
+        >
+          <circle cx="50" cy="50" r="49" />
+          <circle cx="50" cy="50" r="36" />
+        </svg>
+        <Container className="relative grid gap-12 md:grid-cols-12">
+          <div className="reveal md:col-span-5 md:col-start-2">
+            <SectionLabel>{intro.label}</SectionLabel>
+            <h2 className="mt-6 font-serif text-[44px] font-light leading-[1] md:text-[64px]">
+              {intro.headline[0]}
+              <br />
+              {intro.headline[1]}
+            </h2>
+          </div>
+          <div className="reveal md:col-span-5 md:col-start-8 md:pt-16" style={{ "--delay": "150ms" } as React.CSSProperties}>
+            <p className="text-[19px] font-medium leading-snug md:text-[21px]">{intro.lead}</p>
+            {intro.body.map((body) => (
+              <p key={body} className="mt-5 text-[15px] leading-[1.9] text-charcoal/70">
+                {body}
+              </p>
+            ))}
+            <div className="mt-12">
+              <ArrowLink href="/about">View More</ArrowLink>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section aria-label="Our Spaces" className="bg-ivory py-24 md:py-36">
+        <Container>
+          <div className="reveal text-center">
+            <SectionLabel>Our Spaces</SectionLabel>
+            <h2 className="mt-5 font-serif text-[40px] font-light leading-[1.02] md:text-[68px]">
+              Two Spaces.
+              <br />
+              One Business Experience.
+            </h2>
+          </div>
+
+          <div className="mt-14 grid gap-8 sm:grid-cols-2 md:mt-20 md:gap-10">
+            {rooms.map((room, index) => (
+              <SiteLink key={room.slug} href={`/${room.slug}`} className="group block">
+                <div className="reveal-img relative aspect-[4/3] overflow-hidden bg-beige" style={{ "--delay": `${index * 120}ms` } as React.CSSProperties}>
+                  <Image
+                    src={room.living.src}
+                    alt={room.living.alt}
+                    fill
+                    sizes="(min-width: 640px) 50vw, 100vw"
+                    className="object-contain transition-transform duration-1000 group-hover:scale-[1.025]"
+                    style={{ objectPosition: "50% 55%" }}
+                  />
+                </div>
+                <div className="mt-6 flex items-baseline justify-between gap-4 border-t border-charcoal/20 pt-5">
+                  <div>
+                    <p className="text-[11px] uppercase tracking-[0.24em] text-warm-gray">PGC {room.number}</p>
+                    <h3 className="mt-2 font-serif text-[32px] font-light leading-tight md:text-[42px]">{room.name}</h3>
+                    <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-charcoal/70">{room.tagline}</p>
+                  </div>
+                  <span className="grid size-11 shrink-0 place-items-center rounded-full bg-charcoal text-white transition-transform group-hover:translate-x-1" aria-hidden>
+                    →
+                  </span>
+                </div>
+              </SiteLink>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-warm-white py-24 md:py-36">
+        <Container>
+          <div className="reveal">
+            <SectionLabel>Ways to Use PGC</SectionLabel>
+            <h2 className="mt-5 max-w-3xl font-serif text-[40px] font-light leading-tight md:text-[60px]">
+              Spaces for the way your teams work and stay.
+            </h2>
+          </div>
+          <div className="mt-12 grid gap-x-10 md:mt-16 md:grid-cols-2">
+            {roomUseCases.map((useCase, index) => (
+              <SiteLink
+                key={useCase.title}
+                href={useCase.href}
+                className="reveal group border-t border-charcoal/20 py-7 md:py-9"
+                style={{ "--delay": `${index * 80}ms` } as React.CSSProperties}
+              >
+                <div className="flex items-baseline justify-between gap-4">
+                  <h3 className="font-serif text-[27px] font-light md:text-[32px]">{useCase.title}</h3>
+                  <span className="shrink-0 text-[11px] uppercase tracking-[0.18em] text-warm-gray">PGC {useCase.room}</span>
+                </div>
+                <p className="mt-4 max-w-xl text-[15px] leading-[1.85] text-charcoal/70">{useCase.body}</p>
+              </SiteLink>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-ivory py-28 md:py-40">
+        <Container className="grid gap-14 md:grid-cols-12 md:gap-10">
+          <div className="reveal md:col-span-5">
+            <SectionLabel>Location</SectionLabel>
+            <h2 className="mt-6 font-serif text-[44px] font-light leading-[0.98] md:text-[64px]">
+              Pangyo
+              <br />
+              Global Campus
+            </h2>
+            <address className="mt-10 space-y-1 text-[15px] not-italic leading-relaxed">
+              <p className="font-medium">{site.address.rooms}</p>
+              <p className="text-charcoal/70">
+                {site.address.street}
+                <br />({site.address.lot}), {site.address.country}
+              </p>
+            </address>
+            <dl className="mt-10 divide-y divide-charcoal/15 border-y border-charcoal/15">
+              {directions.map((direction) => (
+                <div key={direction.from} className="flex items-baseline justify-between gap-4 py-4 text-[14px]">
+                  <dt className="text-charcoal/80">{direction.from}</dt>
+                  <dd className="shrink-0 text-right text-warm-gray">
+                    {direction.distance} · {direction.time}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-6 text-[13px] leading-relaxed text-charcoal/65">
+              Parking requires pre-registration. Please use the Building 204 side entrance.
+            </p>
+            <div className="mt-10">
+              <ArrowLink href="/location">Directions & Parking</ArrowLink>
+            </div>
+          </div>
+          <div className="reveal-img relative aspect-[4/3] self-start overflow-hidden md:col-span-7 md:aspect-auto md:h-full md:min-h-[560px]">
+            <Image
+              src="/images/campus-aerial.jpg"
+              alt="Aerial view of the TH212 Pangyo campus and surrounding forest"
+              fill
+              sizes="(min-width: 768px) 58vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+        </Container>
+      </section>
+
+      <ContactCta />
+    </>
+  );
+}
