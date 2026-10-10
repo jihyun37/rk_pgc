@@ -7,7 +7,7 @@ import type { Room } from "@/content/rooms";
 
 function RoomFactIcon({ label }: { label: string }) {
   const common = {
-    className: "size-8 text-warm-gray",
+    className: "size-10 shrink-0 text-warm-gray md:size-12",
     fill: "none",
     stroke: "currentColor",
     strokeWidth: 1.4,
@@ -63,9 +63,11 @@ export default function RoomPage({ room, other }: { room: Room; other: Room }) {
             ))}
             <dl className="mt-10 grid grid-cols-3 border-y border-charcoal/15">
               {room.facts.map((f) => (
-                <div key={f.label} className="py-6 text-center">
-                  <RoomFactIcon label={f.label} />
-                  <dd className="mt-2 font-serif text-[44px] font-light leading-none md:text-[56px]">{f.value}</dd>
+                <div key={f.label} className="flex flex-col items-center justify-center py-6">
+                  <div className="flex items-center justify-center gap-3">
+                    <RoomFactIcon label={f.label} />
+                    <dd className="font-serif text-[44px] font-light leading-none md:text-[56px]">{f.value}</dd>
+                  </div>
                   <dt className="mt-2 text-[11px] uppercase tracking-[0.24em] text-warm-gray">{f.label}</dt>
                 </div>
               ))}

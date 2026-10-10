@@ -2,7 +2,7 @@
 
 import SiteLink from "@/components/SiteLink";
 import { useState } from "react";
-import { inquiryTypes, privacyConsent } from "@/content/contact";
+import { privacyConsent } from "@/content/contact";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -21,7 +21,7 @@ export default function ContactForm() {
     const email = String(formData.get("email") ?? "").trim();
     const inquiry = String(formData.get("message") ?? "").trim();
 
-    if (!name || !email || !inquiry || !formData.get("type") || formData.get("consent") !== "yes") {
+    if (!name || !email || !inquiry || formData.get("consent") !== "yes") {
       setStatus("error");
       setMessage("Please complete all required fields and agree to the privacy notice.");
       return;
@@ -45,7 +45,7 @@ export default function ContactForm() {
     setStatus("sending");
     setMessage("");
     try {
-      formData.set("_subject", `[PGC Inquiry] ${String(formData.get("type"))} — ${name}`);
+      formData.set("_subject", `[PGC Inquiry] ${name}`);
       formData.set("_replyto", email);
       const res = await fetch(endpoint, {
         method: "POST",
@@ -95,20 +95,6 @@ export default function ContactForm() {
           <input name="phone" type="tel" maxLength={40} autoComplete="tel" className={field} />
         </label>
       </div>
-
-      <fieldset>
-        <legend className="text-[11px] uppercase tracking-[0.24em] text-warm-gray">Inquiry type *</legend>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {inquiryTypes.map((t, i) => (
-            <label key={t} className="cursor-pointer">
-              <input type="radio" name="type" value={t} required defaultChecked={i === 0} className="peer sr-only" />
-              <span className="inline-block rounded-full border border-charcoal/25 px-4 py-2.5 text-[13px] transition-colors peer-checked:border-charcoal peer-checked:bg-charcoal peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-accent">
-                {t}
-              </span>
-            </label>
-          ))}
-        </div>
-      </fieldset>
 
       <div className="grid gap-8 sm:grid-cols-2">
         <label className="block">
