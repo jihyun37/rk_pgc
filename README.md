@@ -46,10 +46,13 @@ The public project URL is `https://jihyun37.github.io/rk_pgc/`. The standard sit
 
 For instructions on editing content and images, previewing changes in VS Code, building for FTP/SFTP hosting, and the CMS options, read [the Korean operator guide](docs/OPERATOR-GUIDE-KO.md) and [the image inventory](docs/IMAGE-INVENTORY-KO.md).
 
-## Validate
+## Validate (PowerShell)
 
 ```powershell
 npm run lint
 npx tsc --noEmit
-GITHUB_PAGES=1 PAGES_BASE_PATH=/rk_pgc npm run build -- --webpack
+$env:GITHUB_PAGES = "1"
+$env:PAGES_BASE_PATH = "/rk_pgc"
+$env:NEXT_PUBLIC_FORMSPREE_ENDPOINT = "https://formspree.io/f/xoejwjdk"
+npm run build -- --webpack
 ```
