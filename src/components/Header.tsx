@@ -19,6 +19,8 @@ function HeaderNavigation({ pathname }: { pathname: string }) {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const menuOpen = mobileOpen || openMenu !== null;
+  const normalizedPathname = pathname.replace(/\/+$/, "");
+  const lightPage = LIGHT_PAGES.some((path) => normalizedPathname.endsWith(path));
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -56,7 +58,7 @@ function HeaderNavigation({ pathname }: { pathname: string }) {
     };
   }, []);
 
-  const solid = LIGHT_PAGES.includes(pathname) || (scrolled && !menuOpen);
+  const solid = lightPage || (scrolled && !menuOpen);
   const closeMenus = () => {
     setOpenMenu(null);
     setMobileOpen(false);
@@ -84,7 +86,7 @@ function HeaderNavigation({ pathname }: { pathname: string }) {
           <ul className="flex items-center gap-6 xl:gap-8">
             {nav.map((item) => {
               const expanded = openMenu === item.label;
-              const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
+              const active = normalizedPathname.endsWith(item.href) || Boolean(item.children?.some((child) => normalizedPathname.endsWith(child.href.split("#")[0])));
               return (
                 <li key={item.label} className="relative">
                   {item.children ? (
