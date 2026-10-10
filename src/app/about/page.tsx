@@ -134,12 +134,12 @@ export default function AboutPage() {
               <Image src="/images/location-map.jpg" alt="Map showing TH212 Pangyo near Pangyo and Bundang" fill sizes="(min-width: 768px) 40vw, 100vw" className="object-cover" />
             </div>
           </div>
-          <div className="md:col-span-6 md:col-start-7 lg:pt-[168px]">
+          <div className="md:col-span-6 md:col-start-7 lg:pt-[208px]">
             <dl className="grid lg:min-h-[680px] lg:grid-rows-4">
               {advantages.map((a, i) => (
                 <div
                   key={a.title}
-                  className="reveal flex flex-col justify-center border-t border-charcoal/15 py-8 first:border-t-0 first:pt-0 md:py-10 lg:first:pt-10"
+                  className="reveal flex flex-col justify-center border-t border-charcoal/15 py-8 first:border-t-0 first:pt-0 md:py-10 lg:py-4 lg:first:pt-4"
                   style={{ "--delay": `${i * 90}ms` } as React.CSSProperties}
                 >
                   <dt className="flex items-center gap-4">
