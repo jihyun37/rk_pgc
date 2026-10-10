@@ -18,7 +18,7 @@ export default function AboutPage() {
           <>
             Designed for
             <br />
-            Business & Stay
+            Work & Rest
           </>
         }
         subtitle={site.tagline}

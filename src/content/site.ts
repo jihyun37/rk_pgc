@@ -42,7 +42,7 @@ export const nav: NavItem[] = [
 export const site = {
   name: "Pangyo Global Campus",
   short: "PGC",
-  tagline: "Premium Business Stay for Work & Rest",
+  tagline: "A refined stay for work and rest.",
   operator: "RONDA KOREA",
   complex: "TH212 Pangyo",
   address: {
@@ -58,11 +58,11 @@ export const site = {
 
 export const intro = {
   label: "About PGC",
-  headline: ["A New Standard", "for Business Stay"],
+  headline: ["A New Standard", "in Business Stays"],
   lead: "A place where business and comfort connect naturally.",
   body: [
-    "Located in Daejang-dong, Pangyo, Pangyo Global Campus is a high-end terrace residence where nature and seasonal terrace living come together.",
-    "Designed for employees, global partners, and visitors, it offers a premium business residence experience that seamlessly connects work, relaxation, and meaningful interactions in a refined and comfortable environment.",
+    "Located in Daejang-dong, Pangyo, Pangyo Global Campus is an upscale residence with private terraces, bringing nature and seasonal outdoor living into everyday life.",
+    "Designed for employees, global partners, and visitors, it offers a refined, comfortable setting that brings work, relaxation, and meaningful connections together.",
   ],
 };
 
@@ -98,20 +98,20 @@ export const directions = [
 
 export const advantages = [
   {
-    title: "Traffic",
-    body: "Ultra-fast connectivity via Seopangyo Tunnel, GTX-A Seongnam Station, Seopangyo Station, Shinbundang Line, Bundang Line, and Seopangyo IC.",
+    title: "Connectivity",
+    body: "Convenient access via Seopangyo Tunnel, GTX-A Seongnam Station, Seopangyo Station, the Shinbundang and Bundang Lines, and Seopangyo IC.",
   },
   {
-    title: "Infra",
-    body: "Hyundai Department Store in Pangyo New Town, Seoul National University Hospital, Homeplus, and commercial & neighborhood facilities within Pangyo Daejang District.",
+    title: "Local Amenities",
+    body: "Nearby amenities include Hyundai Department Store in Pangyo New Town, Seoul National University Hospital, Homeplus, and the shops and neighborhood facilities of Pangyo Daejang District.",
   },
   {
-    title: "Tourist Spot",
-    body: "Lotte Premium Outlet Uiwang 20 km (20 min), Lotte World 22 km (35 min), Seoul Grand Park 17 km (25 min), Gangnam COEX 25 km (35 min), Myeongdong 27 km (50 min).",
+    title: "Nearby Attractions",
+    body: "Lotte Premium Outlet Uiwang (20 km, 20 min), Lotte World (22 km, 35 min), Seoul Grand Park (17 km, 25 min), Gangnam COEX (25 km, 35 min), and Myeong-dong (27 km, 50 min).",
   },
   {
-    title: "Eco",
-    body: "A nature-inspired setting with easy access to Gogiri Valley, Cheonggyesan, Gwanggyosan, and Barasan Recreational Forest. Enjoy everyday comfort surrounded by nature.",
+    title: "Nature & Outdoors",
+    body: "Enjoy a nature-rich setting with easy access to Gogiri Valley, Cheonggyesan, Gwanggyosan, and Barasan Recreational Forest.",
   },
 ];
 
