@@ -2,7 +2,7 @@ import Image from "next/image";
 import SiteLink from "@/components/SiteLink";
 import PageHero from "./PageHero";
 import RoomGallery from "./RoomGallery";
-import { ArrowIcon, ArrowLink, Container, SectionLabel } from "./ui";
+import { ArrowIcon, Container, SectionLabel } from "./ui";
 import type { Room } from "@/content/rooms";
 
 function RoomFactIcon({ label }: { label: string }) {
@@ -140,16 +140,6 @@ export default function RoomPage({ room, other }: { room: Room; other: Room }) {
               </li>
             ))}
           </ul>
-        </Container>
-      </section>
-
-      {/* Guide link */}
-      <section className="bg-warm-white py-20">
-        <Container className="reveal flex flex-col justify-between gap-8 md:flex-row md:items-center">
-          <p className="max-w-xl text-[16px] leading-relaxed text-charcoal/75">
-            Please review the visitor guide for parking registration, check-in, and room guidelines.
-          </p>
-          <ArrowLink href="/guide">Visitor Guide</ArrowLink>
         </Container>
       </section>
 
