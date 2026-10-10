@@ -1,16 +1,8 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RevealObserver from "@/components/RevealObserver";
 import "./globals.css";
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
-});
 
 export const metadata: Metadata = {
   title: {
@@ -23,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className={cormorant.variable}>
+    <html lang="en" data-scroll-behavior="smooth">
       <head>
       </head>
       <body>
