@@ -15,20 +15,20 @@ Open `http://localhost:3000`.
 
 The contact form uses Formspree because GitHub Pages does not provide server-side email delivery.
 
-1. Create a Formspree form for `rondakorea@rondakorea.com` and verify that recipient address with Formspree.
-2. Copy the form endpoint in the format `https://formspree.io/f/your_form_id`.
-3. For local testing, copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_FORMSPREE_ENDPOINT` to that endpoint. Restart the development server.
-4. Add the same endpoint as the GitHub Actions repository secret named `FORMSPREE_ENDPOINT` under **Settings → Secrets and variables → Actions**.
-5. Submit a test inquiry and confirm receipt in the verified inbox. Formspree may require enabling the form and confirming its activation email before delivery.
+1. The project form endpoint is `https://formspree.io/f/xoejwjdk`.
+2. Add and verify `rondakorea@rondakorea.com` under **Formspree Account → Linked Emails**.
+3. Open the form's **Workflow → Email → Settings** and select the verified business email as **Send to**.
+4. For local testing, copy `.env.example` to `.env.local` and restart the development server.
+5. Submit a test inquiry and confirm receipt in the verified inbox.
 
-The website validates required fields and email format, requires privacy consent, and includes Formspree's `_gotcha` honeypot field. Do not commit real endpoint IDs or credentials. The form explicitly reports when delivery is not configured; it never displays a false success state. Review Formspree's processing and retention terms for your privacy policy before production use.
+The endpoint identifier is public by design for static browser forms and is not a credential. The website validates required fields and email format, requires privacy consent, and includes Formspree's `_gotcha` honeypot field. Review Formspree's processing and retention terms for your privacy policy before production use.
 
 ## Deploy to GitHub Pages
 
 The `Deploy GitHub Pages` workflow builds the static export at `/rk_pgc/` and publishes it when commits are pushed to `main`.
 
 1. In repository **Settings → Pages**, set the build and deployment source to **GitHub Actions**.
-2. Configure the `FORMSPREE_ENDPOINT` Actions secret as described above.
+2. Verify the Formspree recipient and select it in the form's Email workflow.
 3. Push or merge changes to `main`; check **Actions → Deploy GitHub Pages** for build and deployment status.
 
 The public project URL is `https://jihyun37.github.io/rk_pgc/`. The standard site pages are statically exported; Formspree handles submissions independently of the Pages host.

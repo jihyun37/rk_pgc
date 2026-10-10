@@ -12,8 +12,7 @@
 
 ### Configuration required before email delivery
 
-- Create and activate a Formspree form addressed to `rondakorea@rondakorea.com`.
-- Add its endpoint as the GitHub Actions secret `FORMSPREE_ENDPOINT` and redeploy.
+- Verify `rondakorea@rondakorea.com` as a linked Formspree email and select it in the form's Email workflow.
 - GitHub Pages settings must use GitHub Actions as the deployment source.
 
 ## 0.1.0 — 통합 리뉴얼 초안
