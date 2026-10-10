@@ -39,15 +39,20 @@ The public project URL is `https://jihyun37.github.io/rk_pgc/`. The standard sit
 |---|---|
 | `src/app/` | Home, about, rooms, guide, location, contact, and privacy routes |
 | `src/components/` | Header, footer, room galleries, forms, and shared UI |
-| `src/content/` | English site, room, visitor-guide, and contact content |
-| `public/images/` | Original PGC image assets |
+| `src/content/` | English site, room, visitor-guide, contact, and home-slider content |
+| `public/images/` | Original PGC image assets; see the Korean inventory for page usage |
 | `.github/workflows/pages.yml` | Lint, static build, and GitHub Pages deployment |
-| `docs/` | Source comparison and improvement-deck implementation notes |
+| `docs/` | Korean operator guide, image inventory, source comparison, and implementation notes |
 
-## Validate
+For instructions on editing content and images, previewing changes in VS Code, building for FTP/SFTP hosting, and the CMS options, read [the Korean operator guide](docs/OPERATOR-GUIDE-KO.md) and [the image inventory](docs/IMAGE-INVENTORY-KO.md).
+
+## Validate (PowerShell)
 
 ```powershell
 npm run lint
 npx tsc --noEmit
-GITHUB_PAGES=1 PAGES_BASE_PATH=/rk_pgc npm run build -- --webpack
+$env:GITHUB_PAGES = "1"
+$env:PAGES_BASE_PATH = "/rk_pgc"
+$env:NEXT_PUBLIC_FORMSPREE_ENDPOINT = "https://formspree.io/f/xoejwjdk"
+npm run build -- --webpack
 ```
