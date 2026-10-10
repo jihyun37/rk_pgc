@@ -25,18 +25,10 @@ export default function ContactPage() {
                 className="object-cover object-[40%_60%]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20" />
-              <div className="absolute inset-x-0 bottom-0 p-12 text-white">
-                <p className="font-serif text-[64px] font-light leading-[0.95]">
-                  Welcome to
-                  <br />
-                  Pangyo Global Campus
-                </p>
-              </div>
             </div>
           </div>
         </div>
 
-        {/* Mobile header band — keeps the transparent header readable */}
         <div className="relative h-[48svh] min-h-[340px] bg-charcoal text-white lg:hidden">
           <Image
             src="/images/404-hero.jpg"
@@ -47,11 +39,6 @@ export default function ContactPage() {
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/65 to-black/25" />
-          <p className="absolute inset-x-0 bottom-0 p-6 font-serif text-[44px] font-light leading-[0.95]">
-            Welcome to
-            <br />
-            Pangyo Global Campus
-          </p>
         </div>
 
         <Container className="py-16 lg:px-16 lg:py-40">

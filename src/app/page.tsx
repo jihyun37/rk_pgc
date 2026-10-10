@@ -8,6 +8,30 @@ import { directions, intro, roomUseCases, site } from "@/content/site";
 
 const rooms = [businessRoom, guestRoom];
 
+function UseCaseIcon({ title }: { title: string }) {
+  const common = {
+    className: "size-7 shrink-0 text-warm-gray",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.35,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    viewBox: "0 0 32 32",
+    "aria-hidden": true as const,
+  };
+
+  if (title === "Executive Stay") {
+    return <svg {...common}><circle cx="16" cy="10" r="4" /><path d="M7.5 27v-2.2a8.5 8.5 0 0 1 17 0V27z" /></svg>;
+  }
+  if (title === "Corporate Workshop") {
+    return <svg {...common}><rect x="5" y="5" width="22" height="16" rx="1" /><path d="m10 16 4-4 3 2 5-5M16 21v6m-5 0h10" /></svg>;
+  }
+  if (title === "Partner Meeting") {
+    return <svg {...common}><circle cx="11" cy="11" r="3.5" /><circle cx="22" cy="12" r="3" /><path d="M3.5 26v-1.5a7.5 7.5 0 0 1 15 0V26zm16-7a6 6 0 0 1 9 5v2h-6" /></svg>;
+  }
+  return <svg {...common}><circle cx="16" cy="9" r="3.5" /><circle cx="7" cy="13" r="2.5" /><circle cx="25" cy="13" r="2.5" /><path d="M8 26v-1.5a8 8 0 0 1 16 0V26zm-6 0v-1.5a5 5 0 0 1 5-5m23 6.5v-1.5a5 5 0 0 0-5-5" /></svg>;
+}
+
 export default function Home() {
   return (
     <>
@@ -105,7 +129,10 @@ export default function Home() {
                 style={{ "--delay": `${index * 80}ms` } as React.CSSProperties}
               >
                 <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="font-serif text-[27px] font-light md:text-[32px]">{useCase.title}</h3>
+                  <div className="flex items-center gap-3">
+                    <UseCaseIcon title={useCase.title} />
+                    <h3 className="font-serif text-[27px] font-light md:text-[32px]">{useCase.title}</h3>
+                  </div>
                   <span className="shrink-0 text-[11px] uppercase tracking-[0.18em] text-warm-gray">PGC {useCase.room}</span>
                 </div>
                 <p className="mt-4 max-w-xl text-[15px] leading-[1.85] text-charcoal/70">{useCase.body}</p>

@@ -5,15 +5,37 @@ import RoomGallery from "./RoomGallery";
 import { ArrowIcon, ArrowLink, Container, SectionLabel } from "./ui";
 import type { Room } from "@/content/rooms";
 
+function RoomFactIcon({ label }: { label: string }) {
+  const common = {
+    className: "size-5 text-warm-gray",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.4,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    viewBox: "0 0 24 24",
+    "aria-hidden": true as const,
+  };
+
+  if (label.toLowerCase().includes("guest")) {
+    return <svg {...common}><circle cx="12" cy="7" r="3" /><path d="M5.5 20v-2a6.5 6.5 0 0 1 13 0v2z" /></svg>;
+  }
+  if (label.toLowerCase().includes("bed")) {
+    return <svg {...common}><path d="M3 19v-9m18 9v-5a3 3 0 0 0-3-3H3m0 4h18M7 11V8h4a3 3 0 0 1 3 3" /></svg>;
+  }
+  return <svg {...common}><path d="M4 7h16v13H4zM4 11h16M8 7V4m8 3V4m-8 7v2m8-2v2" /></svg>;
+}
+
 export default function RoomPage({ room, other }: { room: Room; other: Room }) {
   const warm = room.slug === "guest-room";
+  const title = room.name.replace(/^PGC \d+\s*/, "");
 
   return (
     <>
       <PageHero
         tall
         label={`Room ${room.number}`}
-        title={room.name}
+        title={title}
         subtitle={room.tagline}
         image={room.hero.src}
         alt={room.hero.alt}
@@ -42,7 +64,8 @@ export default function RoomPage({ room, other }: { room: Room; other: Room }) {
             <dl className="mt-10 grid grid-cols-3 border-y border-charcoal/15">
               {room.facts.map((f) => (
                 <div key={f.label} className="py-6 text-center">
-                  <dd className="font-serif text-[44px] font-light leading-none md:text-[56px]">{f.value}</dd>
+                  <RoomFactIcon label={f.label} />
+                  <dd className="mt-2 font-serif text-[44px] font-light leading-none md:text-[56px]">{f.value}</dd>
                   <dt className="mt-2 text-[11px] uppercase tracking-[0.24em] text-warm-gray">{f.label}</dt>
                 </div>
               ))}
@@ -82,15 +105,17 @@ export default function RoomPage({ room, other }: { room: Room; other: Room }) {
         </Container>
       </section>
 
-      {/* Consistent image cards open a full-screen, keyboard-accessible gallery. */}
+      {/* Room gallery and title remain side by side on larger screens. */}
       <section className={`${warm ? "bg-ivory" : "bg-warm-white"} py-24 md:py-36`}>
-        <Container>
-          <div className="reveal mb-14 md:mb-20">
+        <Container className="grid items-start gap-10 md:grid-cols-12 md:gap-12">
+          <div className="reveal md:col-span-3">
             <SectionLabel>Spaces</SectionLabel>
             <h2 className="mt-5 font-serif text-[40px] font-light md:text-[56px]">Inside {room.number}</h2>
-            <p className="mt-4 text-[14px] text-charcoal/65">Click to enlarge image</p>
+            <p className="mt-4 text-[14px] text-charcoal/65">Click an image to view it larger.</p>
           </div>
-          <RoomGallery room={room} />
+          <div className="md:col-span-9">
+            <RoomGallery room={room} />
+          </div>
         </Container>
       </section>
 
@@ -108,16 +133,12 @@ export default function RoomPage({ room, other }: { room: Room; other: Room }) {
               Wi-Fi is available. Connection details are shared privately with confirmed guests.
             </p>
           </div>
-          <ul className="reveal grid grid-cols-2 self-start border-t border-charcoal/15 md:col-span-8 md:grid-cols-3">
-            {room.amenities.map((a) => {
-              const signature = room.signature.includes(a);
-              return (
-                <li key={a} className="flex items-center gap-2 border-b border-charcoal/15 py-4 text-[15px]">
-                  {a}
-                  {signature && <span className="size-1.5 rounded-full bg-accent" aria-label="signature amenity" />}
-                </li>
-              );
-            })}
+          <ul className="reveal grid grid-cols-2 gap-x-6 gap-y-3 self-start md:col-span-8 md:grid-cols-3">
+            {room.amenities.map((amenity) => (
+              <li key={amenity} className="py-3 text-[15px] text-charcoal/85">
+                {amenity}
+              </li>
+            ))}
           </ul>
         </Container>
       </section>

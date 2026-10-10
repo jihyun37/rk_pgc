@@ -8,10 +8,16 @@ type GalleryImage = Room["hero"] & { name: string };
 
 export default function RoomGallery({ room }: { room: Room }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
   const images: GalleryImage[] = [
     { ...room.living, name: "Living lounge" },
     ...room.spaces.map((space) => ({ ...space, name: space.name })),
   ];
+  const slideCount = Math.ceil(images.length / 2);
+  const visibleImages = Array.from({ length: Math.min(2, images.length) }, (_, offset) => {
+    const index = (activeSlide * 2 + offset) % images.length;
+    return { image: images[index], index };
+  });
 
   useEffect(() => {
     if (activeIndex === null) return;
@@ -31,34 +37,79 @@ export default function RoomGallery({ room }: { room: Room }) {
     };
   }, [activeIndex, images.length]);
 
+  useEffect(() => {
+    if (activeIndex !== null || slideCount < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setInterval(() => {
+      setActiveSlide((slide) => (slide + 1) % slideCount);
+    }, 3500);
+    return () => window.clearInterval(timer);
+  }, [activeIndex, slideCount]);
+
   const activeImage = activeIndex === null ? null : images[activeIndex];
 
   return (
     <>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {images.map((image, index) => (
-          <figure key={`${image.src}-${index}`}>
-            <button
-              type="button"
-              onClick={() => setActiveIndex(index)}
-              aria-label="Click to enlarge image"
-              className="group block w-full text-left"
-            >
-              <span className="relative block aspect-[4/3] overflow-hidden bg-beige">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-contain transition-transform duration-700 group-hover:scale-[1.025]"
-                  style={{ objectPosition: image.position ?? "50% 50%" }}
+      <div aria-label="Room photo gallery" aria-live="off">
+        <div className="grid grid-cols-2 gap-3 md:gap-6">
+          {visibleImages.map(({ image, index }) => (
+            <figure key={`${image.src}-${index}`}>
+              <button
+                type="button"
+                onClick={() => setActiveIndex(index)}
+                aria-label={`View ${image.name} image larger`}
+                className="group block w-full text-left"
+              >
+                <span className="relative block aspect-[4/3] overflow-hidden bg-beige">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(min-width: 768px) 37vw, 50vw"
+                    className="object-contain transition-transform duration-700 group-hover:scale-[1.025]"
+                    style={{ objectPosition: image.position ?? "50% 50%" }}
+                  />
+                </span>
+                <span className="mt-4 block text-[16px] font-medium md:text-[20px]">{image.name}</span>
+                <span className="mt-1 block text-[12px] text-warm-gray">PGC {room.number}</span>
+              </button>
+            </figure>
+          ))}
+        </div>
+
+        {slideCount > 1 && (
+          <div className="mt-6 flex items-center justify-between">
+            <div className="flex gap-2" aria-label="Gallery slides">
+              {Array.from({ length: slideCount }, (_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  onClick={() => setActiveSlide(index)}
+                  aria-label={`Show gallery pair ${index + 1}`}
+                  aria-pressed={activeSlide === index}
+                  className={`h-1 w-8 transition-colors ${activeSlide === index ? "bg-charcoal" : "bg-charcoal/20 hover:bg-charcoal/50"}`}
                 />
-              </span>
-              <span className="mt-4 block text-[18px] font-medium md:text-[20px]">{image.name}</span>
-              <span className="mt-1 block text-[12px] text-warm-gray">PGC {room.number}</span>
-            </button>
-          </figure>
-        ))}
+              ))}
+            </div>
+            <div className="flex gap-3">
+              <button
+                type="button"
+                onClick={() => setActiveSlide((slide) => (slide + slideCount - 1) % slideCount)}
+                aria-label="Previous gallery pair"
+                className="grid size-10 place-items-center rounded-full border border-charcoal/25 text-charcoal transition-colors hover:bg-charcoal hover:text-white"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveSlide((slide) => (slide + 1) % slideCount)}
+                aria-label="Next gallery pair"
+                className="grid size-10 place-items-center rounded-full border border-charcoal/25 text-charcoal transition-colors hover:bg-charcoal hover:text-white"
+              >
+                ›
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
       {activeImage && activeIndex !== null && (

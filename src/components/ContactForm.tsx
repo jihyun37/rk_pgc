@@ -126,23 +126,22 @@ export default function ContactForm() {
         <textarea name="message" required rows={5} maxLength={3000} className={`${field} resize-y`} />
       </label>
 
-      {/* Honeypot */}
       <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
 
-      <div className="border border-line bg-ivory p-5 text-[13px] leading-relaxed text-charcoal/75">
+      <div className="space-y-3 text-[13px] leading-relaxed text-charcoal/75">
         <p className="font-medium text-charcoal">Consent to collection and use of personal information</p>
-        <ul className="mt-2 space-y-1">
+        <ul className="space-y-1">
           <li>Items: {privacyConsent.items}</li>
           <li>Purpose: {privacyConsent.purpose}</li>
           <li>Retention: {privacyConsent.retention}</li>
         </ul>
-        <p className="mt-2">
+        <p>
           You may decline, but we will be unable to respond to your inquiry.{" "}
           <SiteLink href="/privacy" className="underline underline-offset-2">
             Privacy Notice
           </SiteLink>
         </p>
-        <label className="mt-4 flex cursor-pointer items-center gap-3 text-charcoal">
+        <label className="flex cursor-pointer items-center gap-3 text-charcoal">
           <input type="checkbox" name="consent" value="yes" required className="size-4 accent-charcoal" />I agree
         </label>
       </div>

@@ -8,15 +8,7 @@ export type NavItem = {
 };
 
 export const nav: NavItem[] = [
-  {
-    label: "About",
-    href: "/about",
-    children: [
-      { label: "Introduction", href: "/about" },
-      { label: "Identity & Concept", href: "/about#identity" },
-      { label: "Location Advantage", href: "/about#advantage" },
-    ],
-  },
+  { label: "About", href: "/about" },
   {
     label: "Rooms",
     href: "/business-room",
@@ -25,18 +17,9 @@ export const nav: NavItem[] = [
       { label: "PGC 404 Guest Room", href: "/guest-room" },
     ],
   },
-  {
-    label: "Visitor Guide",
-    href: "/guide",
-    children: [
-      { label: "Reservation Information", href: "/guide#reservation" },
-      { label: "Your Stay", href: "/guide#stay" },
-      { label: "Guest Guidelines", href: "/guide#guidelines" },
-      { label: "FAQ", href: "/guide#faq" },
-    ],
-  },
-  { label: "Location & Directions", href: "/location" },
-  { label: "Contact Information", href: "/contact" },
+  { label: "Guide", href: "/guide" },
+  { label: "Location", href: "/location" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const site = {

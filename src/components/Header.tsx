@@ -56,7 +56,7 @@ function HeaderNavigation({ pathname }: { pathname: string }) {
     };
   }, []);
 
-  const solid = (scrolled || LIGHT_PAGES.includes(pathname)) && !menuOpen;
+  const solid = LIGHT_PAGES.includes(pathname) || (scrolled && !menuOpen);
   const closeMenus = () => {
     setOpenMenu(null);
     setMobileOpen(false);
