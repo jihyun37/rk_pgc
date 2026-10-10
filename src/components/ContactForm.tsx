@@ -96,17 +96,6 @@ export default function ContactForm() {
         </label>
       </div>
 
-      <div className="grid gap-8 sm:grid-cols-2">
-        <label className="block">
-          <span className="text-[11px] uppercase tracking-[0.24em] text-warm-gray">Preferred dates</span>
-          <input name="dates" maxLength={80} placeholder="e.g. 12 – 15 Oct" className={field} />
-        </label>
-        <label className="block">
-          <span className="text-[11px] uppercase tracking-[0.24em] text-warm-gray">Number of guests</span>
-          <input name="guests" inputMode="numeric" maxLength={10} className={field} />
-        </label>
-      </div>
-
       <label className="block">
         <span className="text-[11px] uppercase tracking-[0.24em] text-warm-gray">Message *</span>
         <textarea name="message" required rows={5} maxLength={3000} className={`${field} resize-y`} />
