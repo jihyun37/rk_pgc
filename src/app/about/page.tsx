@@ -134,24 +134,26 @@ export default function AboutPage() {
               <Image src="/images/location-map.jpg" alt="Map showing TH212 Pangyo near Pangyo and Bundang" fill sizes="(min-width: 768px) 40vw, 100vw" className="object-cover" />
             </div>
           </div>
-          <dl className="md:col-span-6 md:col-start-7">
-            {advantages.map((a, i) => (
-              <div
-                key={a.title}
-                className="reveal border-t border-charcoal/15 py-8 first:border-t-0 first:pt-0 md:py-10"
-                style={{ "--delay": `${i * 90}ms` } as React.CSSProperties}
-              >
-                <dt className="flex items-center gap-4">
-                  <AdvantageIcon title={a.title} />
-                  <span className="font-serif text-[34px] font-light">{a.title}</span>
-                </dt>
-                <dd className="mt-3 pl-12 text-[15px] leading-[1.85] text-charcoal/70">{a.body}</dd>
-              </div>
-            ))}
+          <div className="md:col-span-6 md:col-start-7 lg:pt-[168px]">
+            <dl className="grid lg:min-h-[680px] lg:grid-rows-4">
+              {advantages.map((a, i) => (
+                <div
+                  key={a.title}
+                  className="reveal flex flex-col justify-center border-t border-charcoal/15 py-8 first:border-t-0 first:pt-0 md:py-10 lg:first:pt-10"
+                  style={{ "--delay": `${i * 90}ms` } as React.CSSProperties}
+                >
+                  <dt className="flex items-center gap-4">
+                    <AdvantageIcon title={a.title} />
+                    <span className="font-serif text-[34px] font-light">{a.title}</span>
+                  </dt>
+                  <dd className="mt-3 pl-12 text-[15px] leading-[1.85] text-charcoal/70">{a.body}</dd>
+                </div>
+              ))}
+            </dl>
             <div className="reveal pl-12 pt-4">
               <ArrowLink href="/location">Directions & Parking</ArrowLink>
             </div>
-          </dl>
+          </div>
         </Container>
       </section>
 
