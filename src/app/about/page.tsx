@@ -9,6 +9,30 @@ export const metadata: Metadata = {
   description: intro.body[0],
 };
 
+function AdvantageIcon({ title }: { title: string }) {
+  const common = {
+    className: "size-8 shrink-0 text-warm-gray md:size-9",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.4,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    viewBox: "0 0 32 32",
+    "aria-hidden": true as const,
+  };
+
+  if (title === "Connectivity") {
+    return <svg {...common}><path d="M5 25 25 5M8 8h7v7M17 17h7v7" /><circle cx="7" cy="25" r="2" /><circle cx="25" cy="7" r="2" /></svg>;
+  }
+  if (title === "Local Amenities") {
+    return <svg {...common}><path d="M5 13h22v14H5zM3 13l3-7h20l3 7M10 27v-8h6v8m4-9h3v3h-3z" /></svg>;
+  }
+  if (title === "Nearby Attractions") {
+    return <svg {...common}><path d="m16 4 3.4 7 7.6 1.1-5.5 5.4 1.3 7.5-6.8-3.6-6.8 3.6 1.3-7.5L5 12.1l7.6-1.1z" /></svg>;
+  }
+  return <svg {...common}><path d="M16 27V14m0 5-7-6m7 3 7-7M5 27h22M5 13l4 1 0-4 4 1 3-7 3 7 4-1 0 4 4-1" /></svg>;
+}
+
 export default function AboutPage() {
   return (
     <>
@@ -98,15 +122,15 @@ export default function AboutPage() {
 
       {/* Location advantage */}
       <section id="advantage" className="scroll-mt-20 bg-warm-white py-24 md:py-36">
-        <Container className="grid gap-14 md:grid-cols-12">
-          <div className="reveal md:col-span-5">
+        <Container className="grid items-stretch gap-14 md:grid-cols-12">
+          <div className="reveal flex flex-col md:col-span-5">
             <SectionLabel>Well-Connected Location</SectionLabel>
             <h2 className="mt-6 font-serif text-[44px] font-light leading-none md:text-[60px]">
               PGC Location
               <br />
               Advantage
             </h2>
-            <div className="reveal-img relative mt-12 aspect-[821/689] overflow-hidden border border-line">
+            <div className="reveal-img relative mt-12 aspect-[4/5] min-h-[480px] flex-1 overflow-hidden border border-line md:aspect-auto md:min-h-[680px]">
               <Image src="/images/location-map.jpg" alt="Map showing TH212 Pangyo near Pangyo and Bundang" fill sizes="(min-width: 768px) 40vw, 100vw" className="object-cover" />
             </div>
           </div>
@@ -117,14 +141,14 @@ export default function AboutPage() {
                 className="reveal border-t border-charcoal/15 py-8 first:border-t-0 first:pt-0 md:py-10"
                 style={{ "--delay": `${i * 90}ms` } as React.CSSProperties}
               >
-                <dt className="flex items-baseline gap-4">
-                  <span className="font-serif text-[14px] text-warm-gray">0{i + 1}</span>
+                <dt className="flex items-center gap-4">
+                  <AdvantageIcon title={a.title} />
                   <span className="font-serif text-[34px] font-light">{a.title}</span>
                 </dt>
-                <dd className="mt-3 pl-9 text-[15px] leading-[1.85] text-charcoal/70">{a.body}</dd>
+                <dd className="mt-3 pl-12 text-[15px] leading-[1.85] text-charcoal/70">{a.body}</dd>
               </div>
             ))}
-            <div className="reveal pl-9 pt-4">
+            <div className="reveal pl-12 pt-4">
               <ArrowLink href="/location">Directions & Parking</ArrowLink>
             </div>
           </dl>
