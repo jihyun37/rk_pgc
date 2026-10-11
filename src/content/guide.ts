@@ -133,3 +133,17 @@ export const faq = [
     ],
   },
 ];
+
+// One continuous guide: room assignment -> arrival -> parking -> check-in -> stay -> check-out.
+// Built only from the existing reservation / stayFlow / checkout copy (no new wording).
+const flow = (title: string) => stayFlow.find((s) => s.title === title)!;
+const lines = (title: string) => reservation.find((r) => r.title === title)!.lines;
+
+export const stayGuide: { title: string; lead: string; details?: string[]; parking?: boolean }[] = [
+  { title: "Room Assignment", lead: lines("Room Assignment")[0], details: lines("Room Assignment").slice(1) },
+  { title: "Arrival", lead: flow("Arrival").body },
+  { title: "Parking", lead: flow("Parking").body, parking: true },
+  { title: "Check-in", lead: flow("Check-in").body, details: lines("Check-in") },
+  { title: "Stay", lead: flow("Stay").body },
+  { title: "Check-out", lead: flow("Check-out").body, details: [...lines("Check-out"), ...checkout] },
+];

@@ -44,14 +44,7 @@ export default function RoomPage({ room, other }: { room: Room; other: Room }) {
 
       <nav aria-label="Rooms" className="border-b border-line bg-charcoal text-white">
         <Container>
-          <ol className="flex items-center gap-2 pt-5 text-[12px] uppercase tracking-[0.2em] text-white/55">
-            <li><SiteLink href="/" className="hover:text-white">Home</SiteLink></li>
-            <li aria-hidden>/</li>
-            <li><SiteLink href="/business-room" className="hover:text-white">Rooms</SiteLink></li>
-            <li aria-hidden>/</li>
-            <li aria-current="page" className="text-white">{title}</li>
-          </ol>
-          <ul className="mt-2 flex gap-6 md:gap-12">
+          <ul className="flex gap-6 md:gap-12">
             {[room, other]
               .sort((a, b) => (a.slug < b.slug ? -1 : 1))
               .map((r) => {

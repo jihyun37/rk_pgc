@@ -13,10 +13,6 @@ export const nav: NavItem[] = [
   {
     label: "Rooms",
     href: "/business-room",
-    children: [
-      { label: "Business Room", href: "/business-room" },
-      { label: "Guest Room", href: "/guest-room" },
-    ],
   },
   { label: "Guide", href: "/guide" },
   { label: "Location", href: "/location" },
