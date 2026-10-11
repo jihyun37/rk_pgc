@@ -22,15 +22,10 @@ export default function LocationView() {
   return (
     <>
       <PageHero
-        label="Location & Directions"
-        title={
-          <>
-            Pangyo
-            <br />
-            Global Campus
-          </>
-        }
-        subtitle={`${site.address.rooms} · Daejang-dong, Pangyo`}
+        tall
+        label="Information"
+        title="Location"
+        subtitle={`Location & Directions · Pangyo Global Campus · ${site.address.rooms} · Daejang-dong, Pangyo`}
         image="/images/campus-aerial.jpg"
         alt="Aerial view of the TH212 Pangyo campus"
         position="50% 60%"

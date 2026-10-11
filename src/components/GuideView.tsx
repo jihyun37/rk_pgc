@@ -9,15 +9,10 @@ export default function GuideView() {
   return (
     <>
       <PageHero
-        label="Visitor Guide"
-        title={
-          <>
-            Your Stay,
-            <br />
-            Made Simple.
-          </>
-        }
-        subtitle="Please check before your stay."
+        tall
+        label="Information"
+        title="Guide"
+        subtitle="Your Stay, Made Simple. Please check before your stay."
         image="/images/building-205-entrance.jpg"
         alt="Entrance of Building 205"
         position="50% 40%"
