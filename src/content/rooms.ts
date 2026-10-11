@@ -21,14 +21,14 @@ export type Room = {
 export const businessRoom: Room = {
   slug: "business-room",
   number: "403",
-  name: "PGC 403 Event Room",
+  name: "PGC 403 Business Room",
   tagline: "Meet, gather, and stay—with five beds for overnight visits.",
   purpose: ["Corporate Workshop", "Partner Meeting", "Team Offsite", "Overnight Stay"],
   description: [
     "PGC 403 is an event and business space for workshops, private partner meetings, and team offsites. Five beds are available for overnight stays, so it can support both meetings and lodging.",
     "The dining lounge, projector, and audio equipment make it easy to bring focused work, shared meals, and a comfortable stay together.",
   ],
-  experience: "A five-bed accommodation as well as an event room, PGC 403 brings meetings, meals, and overnight stays together in one private space.",
+  experience: "A five-bed accommodation as well as a business room, PGC 403 brings meetings, meals, and overnight stays together in one private space.",
   keywords: [
     { title: "Corporate Workshop", body: "A projector, audio equipment, dining lounge, and five beds support small workshops with an overnight stay." },
     { title: "Partner Meeting", body: "A private setting for client and global partner meetings, with presentation equipment close at hand." },

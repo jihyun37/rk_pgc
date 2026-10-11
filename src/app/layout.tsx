@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s | Pangyo Global Campus",
   },
   description:
-    "A premium business residence in Daejang-dong, Pangyo, where work, rest and meaningful connections come together. PGC 403 Event Room and PGC 404 Guest Room.",
+    "A premium business residence in Daejang-dong, Pangyo, where work, rest and meaningful connections come together. PGC 403 Business Room and PGC 404 Guest Room.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

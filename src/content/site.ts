@@ -13,7 +13,7 @@ export const nav: NavItem[] = [
     label: "Rooms",
     href: "/business-room",
     children: [
-      { label: "PGC 403 Event Room", href: "/business-room" },
+      { label: "PGC 403 Business Room", href: "/business-room" },
       { label: "PGC 404 Guest Room", href: "/guest-room" },
     ],
   },
