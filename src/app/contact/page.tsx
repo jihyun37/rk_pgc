@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
+import InquiryOffice from "@/components/InquiryOffice";
 import { Container, SectionLabel } from "@/components/ui";
 import { site } from "@/content/site";
 
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
+    <>
     <section className="bg-warm-white">
       <div className="grid min-h-svh lg:grid-cols-2">
         <div className="relative hidden bg-charcoal lg:block">
@@ -63,5 +65,7 @@ export default function ContactPage() {
         </Container>
       </div>
     </section>
+    <InquiryOffice />
+    </>
   );
 }

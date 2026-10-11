@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SiteLink from "@/components/SiteLink";
 import { nav, site } from "@/content/site";
 
@@ -20,44 +21,52 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1440px] px-5 pb-10 md:px-10">
-        <div className="grid gap-10 border-t border-line pt-10 md:grid-cols-[1.2fr_1fr_1.4fr] md:gap-16">
-          <div>
-            <p className="font-serif text-[28px] leading-[1.05]">
-              Pangyo
-              <br />
-              Global Campus
-            </p>
-            <p className="mt-4 text-[13px] text-warm-gray">{site.tagline}</p>
+      <div className="bg-charcoal text-white">
+        <div className="mx-auto w-full max-w-[1320px] px-5 py-14 md:px-10 md:py-20">
+          <div className="grid gap-12 md:grid-cols-12 md:gap-10">
+            <div className="md:col-span-3">
+              <SiteLink href="/" aria-label="Pangyo Global Campus, home" className="inline-block">
+                <Image src="/images/logo-ronda-white.png" alt="RONDA" width={168} height={28} className="h-auto w-[150px] md:w-[168px]" />
+              </SiteLink>
+              <p className="mt-6 max-w-[220px] text-[14px] leading-relaxed text-white/60">{site.tagline}</p>
+            </div>
+
+            <address className="space-y-2 text-[14px] not-italic leading-relaxed text-white/70 md:col-span-5">
+              <p className="font-medium text-white">Pangyo Global Campus (TH212)</p>
+              <p>
+                {site.address.street} ({site.address.lot})
+                <br />
+                {site.address.rooms}
+              </p>
+              <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 pt-4">
+                <dt className="text-white/45">Inquiry</dt>
+                <dd><a href={`tel:${site.inquiryPhoneTel}`} className="hover:text-white">T. {site.inquiryPhone}</a></dd>
+                <dt className="text-white/45">Management Office</dt>
+                <dd><a href={`tel:${site.managementPhoneTel}`} className="hover:text-white">T. {site.managementPhone}</a></dd>
+                <dt className="text-white/45">Email</dt>
+                <dd className="break-all"><a href={`mailto:${site.inquiryEmail}`} className="hover:text-white">{site.inquiryEmail}</a></dd>
+              </dl>
+            </address>
+
+            <nav aria-label="Footer" className="md:col-span-3 md:col-start-10">
+              <ul className="space-y-3 text-[13px] uppercase tracking-[0.2em]">
+                {nav.map((n) => (
+                  <li key={n.href}>
+                    <SiteLink href={n.href} className="text-white/80 hover:text-white">
+                      {n.label}
+                    </SiteLink>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
 
-          <nav aria-label="Footer">
-            <ul className="grid grid-cols-2 gap-x-6 gap-y-2.5 text-[12px] uppercase tracking-[0.16em]">
-              {nav.map((n) => (
-                <li key={n.href}>
-                  <SiteLink href={n.href} className="hover:text-warm-gray">
-                    {n.label}
-                  </SiteLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <address className="space-y-1 text-[13px] not-italic leading-relaxed text-charcoal/75">
-            <p className="font-medium text-charcoal">Pangyo Global Campus (TH212)</p>
-            <p>{site.address.rooms}</p>
-            <p>
-              {site.address.street} ({site.address.lot})
-            </p>
-            <p className="pt-2">Operated by {site.operator}</p>
-          </address>
-        </div>
-
-        <div className="mt-12 flex flex-col gap-3 text-[11px] uppercase tracking-[0.18em] text-warm-gray md:flex-row md:justify-between">
-          <p>© {new Date().getFullYear()} Pangyo Global Campus. All rights reserved.</p>
-          <SiteLink href="/privacy" className="hover:text-charcoal">
-            Privacy Notice
-          </SiteLink>
+          <div className="mt-14 flex flex-col gap-3 border-t border-white/15 pt-6 text-[12px] uppercase tracking-[0.16em] text-white/50 md:flex-row md:justify-between">
+            <p>© {new Date().getFullYear()} {site.operator === "RONDA KOREA" ? "RONDA Korea" : site.operator}. All rights reserved.</p>
+            <SiteLink href="/privacy" className="hover:text-white">
+              Privacy Notice
+            </SiteLink>
+          </div>
         </div>
       </div>
     </footer>

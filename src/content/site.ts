@@ -1,5 +1,6 @@
 // Source of truth: "PGC Overview_EN.pdf" (RONDA KOREA) + Notion guest guides (403 / 404).
-// PRIVATE — never add here: door/access codes, Wi-Fi credentials, personal phone/WeChat/email.
+// PRIVATE — never add here: door/access codes, Wi-Fi credentials.
+// Inquiry email, phones and WeChat QR below are published with the owner's approval (2026-10-11).
 
 export type NavItem = {
   label: string;
@@ -36,6 +37,10 @@ export const site = {
   },
   // Business inquiry line printed in the official brochure (not a personal number).
   inquiryPhone: "031-613-2320",
+  inquiryPhoneTel: "+82316132320",
+  inquiryEmail: "nana.kim@rondakorea.com",
+  managementPhone: "031-711-7691",
+  managementPhoneTel: "+82317117691",
   mapQuery: "Pangyo Global Campus TH212",
 };
 

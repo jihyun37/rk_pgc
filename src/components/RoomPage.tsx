@@ -42,6 +42,39 @@ export default function RoomPage({ room, other }: { room: Room; other: Room }) {
         position={room.hero.position}
       />
 
+      <nav aria-label="Rooms" className="border-b border-line bg-charcoal text-white">
+        <Container>
+          <ol className="flex items-center gap-2 pt-5 text-[12px] uppercase tracking-[0.2em] text-white/55">
+            <li><SiteLink href="/" className="hover:text-white">Home</SiteLink></li>
+            <li aria-hidden>/</li>
+            <li><SiteLink href="/business-room" className="hover:text-white">Rooms</SiteLink></li>
+            <li aria-hidden>/</li>
+            <li aria-current="page" className="text-white">{title}</li>
+          </ol>
+          <ul className="mt-2 flex gap-6 md:gap-12">
+            {[room, other]
+              .sort((a, b) => (a.number < b.number ? -1 : 1))
+              .map((r) => {
+                const active = r.slug === room.slug;
+                return (
+                  <li key={r.slug}>
+                    <SiteLink
+                      href={`/${r.slug}`}
+                      aria-current={active ? "page" : undefined}
+                      className={`flex items-baseline gap-2 whitespace-nowrap border-b-2 py-4 font-serif text-[19px] md:gap-3 md:text-[26px] ${
+                        active ? "border-accent text-white" : "border-transparent text-white/55 hover:text-white"
+                      }`}
+                    >
+                      {r.name.replace(/^PGC \d+\s*/, "")}
+                      <span className="font-sans text-[12px] tracking-[0.2em]">{r.number}</span>
+                    </SiteLink>
+                  </li>
+                );
+              })}
+          </ul>
+        </Container>
+      </nav>
+
       {/* Intro + key facts */}
       <section className={`${warm ? "bg-ivory" : "bg-warm-white"} py-24 md:py-36`}>
         <Container className="grid gap-14 md:grid-cols-12">
@@ -145,26 +178,38 @@ export default function RoomPage({ room, other }: { room: Room; other: Room }) {
         </Container>
       </section>
 
-      {/* Other room */}
-      <SiteLink href={`/${other.slug}`} className="group relative block h-[56svh] min-h-[380px] overflow-hidden bg-charcoal text-white">
-        <Image
-          src={other.hero.src}
-          alt={other.hero.alt}
-          fill
-          sizes="100vw"
-          className="object-cover opacity-70 transition-transform duration-[1500ms] ease-out group-hover:scale-105"
-          style={{ objectPosition: other.hero.position }}
-        />
-        <div className="absolute inset-0 bg-black/30" />
-        <div className="relative mx-auto flex h-full max-w-[1440px] flex-col justify-end px-5 pb-14 md:px-10 md:pb-20">
-          <p className="text-[11px] uppercase tracking-[0.34em] text-white/75">Next Space · Room {other.number}</p>
-          <p className="mt-4 flex items-center gap-6 font-serif text-[48px] font-light leading-none md:text-[88px]">
-            {other.name}
-            <ArrowIcon className="size-8 transition-transform duration-500 group-hover:translate-x-2 md:size-12" />
-          </p>
-        </div>
-      </SiteLink>
-
+      {/* Other room — horizontal card */}
+      <section aria-label="Other room" className="bg-charcoal py-16 text-white md:py-24">
+        <Container>
+          <SiteLink
+            href={`/${other.slug}`}
+            className="group grid overflow-hidden border border-white/15 md:grid-cols-12"
+          >
+            <div className="relative aspect-[4/3] md:col-span-7 md:aspect-auto md:min-h-[460px]">
+              <Image
+                src={other.hero.src}
+                alt={other.hero.alt}
+                fill
+                sizes="(min-width: 768px) 58vw, 100vw"
+                className="object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-[1.03]"
+                style={{ objectPosition: other.hero.position }}
+              />
+            </div>
+            <div className="flex flex-col justify-center p-8 md:col-span-5 md:p-14">
+              <p className="text-[12px] uppercase tracking-[0.3em] text-accent">Next Space · Room {other.number}</p>
+              <h2 className="mt-5 font-serif text-[36px] font-light leading-[1.05] md:text-[48px]">
+                {other.name.replace(/^PGC \d+\s*/, "")}
+                <span className="mt-2 block text-[18px] italic text-white/55">PGC {other.number}</span>
+              </h2>
+              <p className="mt-6 text-[15px] leading-relaxed text-white/70">{other.tagline}</p>
+              <span className="mt-10 inline-flex items-center gap-4 font-serif text-[18px] italic">
+                View {other.name.replace(/^PGC \d+\s*/, "")}
+                <ArrowIcon className="size-6 transition-transform duration-500 group-hover:translate-x-2" />
+              </span>
+            </div>
+          </SiteLink>
+        </Container>
+      </section>
     </>
   );
 }
