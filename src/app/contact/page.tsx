@@ -20,7 +20,7 @@ export default function ContactPage() {
             <div className="relative h-full">
               <Image
                 src="/images/404-hero.jpg"
-                alt="Guest Room 404 living room"
+                alt="Guest Room living room"
                 fill
                 priority
                 sizes="50vw"
@@ -34,7 +34,7 @@ export default function ContactPage() {
         <div className="relative h-[48svh] min-h-[340px] bg-charcoal text-white lg:hidden">
           <Image
             src="/images/404-hero.jpg"
-            alt="Guest Room 404 living room"
+            alt="Guest Room living room"
             fill
             priority
             sizes="(min-width: 1024px) 0px, 100vw"

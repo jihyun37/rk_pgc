@@ -34,7 +34,7 @@ export default function RoomPage({ room, other }: { room: Room; other: Room }) {
     <>
       <PageHero
         tall
-        label={`Room ${room.number}`}
+        label="Rooms"
         title={title}
         subtitle={room.tagline}
         image={room.hero.src}
@@ -53,7 +53,7 @@ export default function RoomPage({ room, other }: { room: Room; other: Room }) {
           </ol>
           <ul className="mt-2 flex gap-6 md:gap-12">
             {[room, other]
-              .sort((a, b) => (a.number < b.number ? -1 : 1))
+              .sort((a, b) => (a.slug < b.slug ? -1 : 1))
               .map((r) => {
                 const active = r.slug === room.slug;
                 return (
@@ -66,7 +66,6 @@ export default function RoomPage({ room, other }: { room: Room; other: Room }) {
                       }`}
                     >
                       {r.name.replace(/^PGC \d+\s*/, "")}
-                      <span className="font-sans text-[12px] tracking-[0.2em]">{r.number}</span>
                     </SiteLink>
                   </li>
                 );
@@ -79,7 +78,7 @@ export default function RoomPage({ room, other }: { room: Room; other: Room }) {
       <section className={`${warm ? "bg-ivory" : "bg-warm-white"} py-24 md:py-36`}>
         <Container className="grid gap-14 md:grid-cols-12">
           <div className="reveal md:col-span-5">
-            <SectionLabel>PGC {room.number}</SectionLabel>
+            <SectionLabel>Overview</SectionLabel>
             <ul className="mt-8 space-y-1">
               {room.purpose.map((p) => (
                 <li key={p} className="font-serif text-[30px] font-light leading-tight md:text-[40px]">
@@ -145,7 +144,7 @@ export default function RoomPage({ room, other }: { room: Room; other: Room }) {
         <Container className="grid items-start gap-10 md:grid-cols-12 md:gap-12">
           <div className="reveal md:col-span-3">
             <SectionLabel>Spaces</SectionLabel>
-            <h2 className="mt-5 font-serif text-[40px] font-light md:text-[56px]">Inside {room.number}</h2>
+            <h2 className="mt-5 font-serif text-[40px] font-light md:text-[56px]">Inside the Room</h2>
             <p className="mt-4 text-[14px] text-charcoal/65">Click an image to view it larger.</p>
           </div>
           <div className="md:col-span-9">
@@ -196,10 +195,9 @@ export default function RoomPage({ room, other }: { room: Room; other: Room }) {
               />
             </div>
             <div className="flex flex-col justify-center p-8 md:col-span-5 md:p-14">
-              <p className="text-[12px] uppercase tracking-[0.3em] text-accent">Next Space · Room {other.number}</p>
+              <p className="text-[12px] uppercase tracking-[0.3em] text-accent">Next Space</p>
               <h2 className="mt-5 font-serif text-[36px] font-light leading-[1.05] md:text-[48px]">
                 {other.name.replace(/^PGC \d+\s*/, "")}
-                <span className="mt-2 block text-[18px] italic text-white/55">PGC {other.number}</span>
               </h2>
               <p className="mt-6 text-[15px] leading-relaxed text-white/70">{other.tagline}</p>
               <span className="mt-10 inline-flex items-center gap-4 font-serif text-[18px] italic">

@@ -21,14 +21,14 @@ export type Room = {
 export const businessRoom: Room = {
   slug: "business-room",
   number: "403",
-  name: "PGC 403 Business Room",
+  name: "Business Room",
   tagline: "Meet, gather, and stay—with five beds for overnight visits.",
   purpose: ["Corporate Workshop", "Partner Meeting", "Team Offsite", "Overnight Stay"],
   description: [
-    "PGC 403 is an event and business space for workshops, private partner meetings, and team offsites. Five beds are available for overnight stays, so it can support both meetings and lodging.",
+    "The Business Room is an event and business space for workshops, private partner meetings, and team offsites. Five beds are available for overnight stays, so it can support both meetings and lodging.",
     "The dining lounge, projector, and audio equipment make it easy to bring focused work, shared meals, and a comfortable stay together.",
   ],
-  experience: "A five-bed accommodation as well as a business room, PGC 403 brings meetings, meals, and overnight stays together in one private space.",
+  experience: "With five beds as well as meeting space, the Business Room brings meetings, meals, and overnight stays together in one private space.",
   keywords: [
     { title: "Corporate Workshop", body: "A projector, audio equipment, dining lounge, and five beds support small workshops with an overnight stay." },
     { title: "Partner Meeting", body: "A private setting for client and global partner meetings, with presentation equipment close at hand." },
@@ -55,24 +55,24 @@ export const businessRoom: Room = {
     "Hair Dryer",
   ],
   signature: ["Projector", "Audio Equipment", "Wine Cooler"],
-  hero: { src: "/images/403-hero.jpg", alt: "Room 403 living lounge with chandelier and open kitchen", position: "50% 55%" },
-  living: { src: "/images/403-living.jpg", alt: "Room 403 lounge sofa facing the terrace windows" },
+  hero: { src: "/images/403-hero.jpg", alt: "Business Room living lounge with chandelier and open kitchen", position: "50% 55%" },
+  living: { src: "/images/403-living.jpg", alt: "Business Room lounge sofa facing the terrace windows" },
   spaces: [
-    { name: "Dining Lounge", src: "/images/403-dining-lounge.jpg", alt: "Room 403 kitchen island dining lounge" },
-    { name: "Pamplona", src: "/images/403-pamplona.jpg", alt: "Pamplona bedroom in Room 403" },
-    { name: "Attic", src: "/images/403-attic-study.jpg", alt: "Room 403 attic with low desks" },
-    { name: "Attic", src: "/images/403-attic-rest.jpg", alt: "Room 403 attic rest area with two beds" },
+    { name: "Dining Lounge", src: "/images/403-dining-lounge.jpg", alt: "Business Room kitchen island dining lounge" },
+    { name: "Pamplona", src: "/images/403-pamplona.jpg", alt: "Pamplona bedroom in the Business Room" },
+    { name: "Attic", src: "/images/403-attic-study.jpg", alt: "Business Room attic with low desks" },
+    { name: "Attic", src: "/images/403-attic-rest.jpg", alt: "Business Room attic rest area with two beds" },
   ],
 };
 
 export const guestRoom: Room = {
   slug: "guest-room",
   number: "404",
-  name: "PGC 404 Guest Room",
+  name: "Guest Room",
   tagline: "Comfort for your stay. Privacy for your rest.",
   purpose: ["Executive Stay", "Business Stay", "Extended Visit", "Rest"],
   description: [
-    "PGC 404 is designed for visiting executives, employees, and guests, with nine beds, two bathrooms, and capacity for up to ten guests.",
+    "The Guest Room is designed for visiting executives, employees, and guests, with nine beds, two bathrooms, and capacity for up to ten guests.",
     "Created for both short- and long-term visits, the space offers a comfortable place to rest and recharge between schedules.",
   ],
   experience: "A calm guest residence for executive and team stays, with sleeping capacity for up to ten guests and amenities designed for a comfortable visit.",
@@ -102,13 +102,13 @@ export const guestRoom: Room = {
     "Hair Dryer",
   ],
   signature: ["Massage Chair", "Dryer", "Microwave"],
-  hero: { src: "/images/404-hero.jpg", alt: "Room 404 living room with leather sofas and wood slat wall", position: "50% 60%" },
-  living: { src: "/images/404-living.jpg", alt: "Room 404 living room with two sofa sets" },
+  hero: { src: "/images/404-hero.jpg", alt: "Guest Room living room with leather sofas and wood slat wall", position: "50% 60%" },
+  living: { src: "/images/404-living.jpg", alt: "Guest Room living room with two sofa sets" },
   spaces: [
-    { name: "Dining Lounge", src: "/images/404-dining-lounge.jpg", alt: "Room 404 dining table and kitchen island" },
-    { name: "Santiago", src: "/images/404-santiago.jpg", alt: "Santiago bedroom in Room 404", position: "50% 60%" },
-    { name: "Burgos / León", src: "/images/404-burgos-leon.jpg", alt: "Burgos / León bedroom in Room 404" },
-    { name: "Attic", src: "/images/404-attic.jpg", alt: "Room 404 attic with desks and beds" },
+    { name: "Dining Lounge", src: "/images/404-dining-lounge.jpg", alt: "Guest Room dining table and kitchen island" },
+    { name: "Santiago", src: "/images/404-santiago.jpg", alt: "Santiago bedroom in the Guest Room", position: "50% 60%" },
+    { name: "Burgos / León", src: "/images/404-burgos-leon.jpg", alt: "Burgos / León bedroom in the Guest Room" },
+    { name: "Attic", src: "/images/404-attic.jpg", alt: "Guest Room attic with desks and beds" },
   ],
 };
 

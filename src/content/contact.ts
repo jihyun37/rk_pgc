@@ -3,8 +3,8 @@
 
 export const inquiryTypes = [
   "Business Stay",
-  "Business Room (403)",
-  "Guest Room (404)",
+  "Business Room",
+  "Guest Room",
   "Parking Registration",
   "Other",
 ];

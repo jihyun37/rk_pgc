@@ -66,7 +66,7 @@ export default function RoomGallery({ room }: { room: Room }) {
                 />
               </span>
               <span className="mt-4 block text-[16px] font-medium md:text-[20px]">{currentImage.name}</span>
-              <span className="mt-1 block text-[12px] text-warm-gray">PGC {room.number}</span>
+              <span className="mt-1 block text-[12px] text-warm-gray">{room.name.replace(/^PGC \d+\s*/, "")}</span>
             </button>
           </figure>
         )}
@@ -99,7 +99,7 @@ export default function RoomGallery({ room }: { room: Room }) {
           />
           <div role="dialog" aria-modal="true" aria-label="Image viewer" className="relative z-10 flex h-full w-full max-w-[1440px] flex-col">
             <div className="flex items-center justify-between py-2">
-              <p className="text-[13px] tracking-[0.12em]">PGC {room.number} · {activeImage.name}</p>
+              <p className="text-[13px] tracking-[0.12em]">{room.name.replace(/^PGC \d+\s*/, "")} · {activeImage.name}</p>
               <button type="button" onClick={() => setActiveIndex(null)} aria-label="Close image viewer" className="grid size-11 place-items-center text-3xl leading-none">
                 ×
               </button>

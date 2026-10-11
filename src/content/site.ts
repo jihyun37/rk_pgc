@@ -117,26 +117,26 @@ export const parking = {
 export const roomUseCases = [
   {
     title: "Executive Stay",
-    body: "A comfortable base for visiting domestic and international executives, including extended stays. PGC 404 accommodates up to 10 guests with 9 beds and 2 bathrooms.",
-    room: "404",
+    body: "A comfortable base for visiting domestic and international executives, including extended stays. The Guest Room accommodates up to 10 guests with 9 beds and 2 bathrooms.",
+    room: "Guest Room",
     href: "/guest-room",
   },
   {
     title: "Corporate Workshop",
-    body: "Bring a small workshop and overnight stay together in PGC 403, with a projector, audio equipment, dining lounge and five beds.",
-    room: "403",
+    body: "Bring a small workshop and overnight stay together in the Business Room, with a projector, audio equipment, dining lounge and five beds.",
+    room: "Business Room",
     href: "/business-room",
   },
   {
     title: "Partner Meeting",
-    body: "Host a private meeting with clients or global partners in PGC 403, with presentation equipment and an adjoining lounge.",
-    room: "403",
+    body: "Host a private meeting with clients or global partners in the Business Room, with presentation equipment and an adjoining lounge.",
+    room: "Business Room",
     href: "/business-room",
   },
   {
     title: "Team Offsite",
-    body: "Combine a focused session, shared meals and team conversation in PGC 403, with overnight accommodation available for up to five.",
-    room: "403",
+    body: "Combine a focused session, shared meals and team conversation in the Business Room, with overnight accommodation available for up to five.",
+    room: "Business Room",
     href: "/business-room",
   },
 ];

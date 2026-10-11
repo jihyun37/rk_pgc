@@ -3,7 +3,7 @@ import RoomPage from "@/components/RoomPage";
 import { businessRoom, guestRoom } from "@/content/rooms";
 
 export const metadata: Metadata = {
-  title: "PGC 403 Business Room",
+  title: "Business Room",
   description: businessRoom.description[0],
 };
 

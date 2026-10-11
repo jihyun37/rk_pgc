@@ -13,8 +13,8 @@ export const homeHighlights = [
   },
   {
     image: "/images/403-hero.jpg",
-    alt: "PGC 403 Business Room lounge",
-    label: "Room 403",
+    alt: "Business Room lounge",
+    label: "Business Room",
     title: "Business Room",
     headline: "Designed for meetings, work and networking.",
     description: "A refined setting for business meetings, private gatherings, and meaningful connections, bringing work and relaxation together.",
@@ -24,8 +24,8 @@ export const homeHighlights = [
   },
   {
     image: "/images/404-hero.jpg",
-    alt: "PGC 404 Guest Room lounge",
-    label: "Room 404",
+    alt: "Guest Room lounge",
+    label: "Guest Room",
     title: "Guest Room",
     headline: "Designed for comfort, rest and privacy.",
     description: "A welcoming residence for visiting executives, employees, and guests, with room to relax and recharge between plans.",
