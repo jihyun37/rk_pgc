@@ -2,6 +2,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
 @import "tailwindcss";
 
+/* Digits only (0-9): the exact Pretendard Variable face used by the room tabs, subset so it can
+   sit first in every font stack and style numbers inside mixed text without touching letters. */
+@font-face {
+  font-family: "PGC Numerals";
+  src: url("./fonts/pretendard-digits.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0030-0039;
+}
+
 :root {
   --warm-white: #fbfaf7;
   --ivory: #f5f1ea;
@@ -23,8 +34,8 @@
   --color-charcoal: var(--charcoal);
   --color-navy: var(--navy);
   --color-accent: var(--accent);
-  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-  --font-serif: var(--font-cormorant), "Times New Roman", serif;
+  --font-sans: "PGC Numerals", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --font-serif: "PGC Numerals", var(--font-cormorant), "Times New Roman", serif;
 }
 
 html {

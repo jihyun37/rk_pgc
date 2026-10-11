@@ -1,6 +1,7 @@
 import Image from "next/image";
 import SiteLink from "@/components/SiteLink";
 import PageHero from "./PageHero";
+import PageTabs from "./PageTabs";
 import RoomGallery from "./RoomGallery";
 import { ArrowIcon, Container, SectionLabel } from "./ui";
 import type { Room } from "@/content/rooms";
@@ -42,30 +43,12 @@ export default function RoomPage({ room, other }: { room: Room; other: Room }) {
         position={room.hero.position}
       />
 
-      <nav aria-label="Rooms" className="border-b border-line bg-charcoal text-white">
-        <Container>
-          <ul className="flex gap-6 md:gap-12">
-            {[room, other]
-              .sort((a, b) => (a.slug < b.slug ? -1 : 1))
-              .map((r) => {
-                const active = r.slug === room.slug;
-                return (
-                  <li key={r.slug}>
-                    <SiteLink
-                      href={`/${r.slug}`}
-                      aria-current={active ? "page" : undefined}
-                      className={`flex items-baseline gap-2 whitespace-nowrap border-b-2 py-4 font-serif text-[19px] md:gap-3 md:text-[26px] ${
-                        active ? "border-accent text-white" : "border-transparent text-white/55 hover:text-white"
-                      }`}
-                    >
-                      {r.name.replace(/^PGC \d+\s*/, "")}
-                    </SiteLink>
-                  </li>
-                );
-              })}
-          </ul>
-        </Container>
-      </nav>
+      <PageTabs
+        label="Rooms"
+        items={[room, other]
+          .sort((a, b) => (a.slug < b.slug ? -1 : 1))
+          .map((r) => ({ label: r.name.replace(/^PGC \d+\s*/, ""), href: `/${r.slug}`, active: r.slug === room.slug }))}
+      />
 
       {/* Intro + key facts */}
       <section className={`${warm ? "bg-ivory" : "bg-warm-white"} py-24 md:py-36`}>

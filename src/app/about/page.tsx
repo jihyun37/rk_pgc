@@ -151,7 +151,7 @@ export default function AboutPage() {
               ))}
             </dl>
             <div className="reveal pl-12 pt-4">
-              <ArrowLink href="/location">Directions & Parking</ArrowLink>
+              <ArrowLink href="/information/location">Directions & Parking</ArrowLink>
             </div>
           </div>
         </Container>

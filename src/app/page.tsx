@@ -145,7 +145,7 @@ export default function Home() {
               Parking requires pre-registration. Please use the Building 204 side entrance.
             </p>
             <div className="mt-10">
-              <ArrowLink href="/location">Directions & Parking</ArrowLink>
+              <ArrowLink href="/information/location">Directions & Parking</ArrowLink>
             </div>
           </div>
           <div className="reveal-img relative aspect-[4/3] self-start overflow-hidden md:col-span-7 md:aspect-auto md:h-full md:min-h-[560px]">
