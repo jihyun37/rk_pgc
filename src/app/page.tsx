@@ -2,6 +2,7 @@ import Image from "next/image";
 import ContactCta from "@/components/ContactCta";
 import Hero from "@/components/Hero";
 import HomeHighlightsSlider from "@/components/HomeHighlightsSlider";
+import SiteLink from "@/components/SiteLink";
 import { ArrowLink, Container, SectionLabel } from "@/components/ui";
 import { directions, intro, roomUseCases, site } from "@/content/site";
 
@@ -94,7 +95,7 @@ export default function Home() {
           </div>
           <div className="mt-12 grid gap-x-10 md:mt-16 md:grid-cols-2">
             {roomUseCases.map((useCase, index) => (
-              <a
+              <SiteLink
                 key={useCase.title}
                 href={useCase.href}
                 className="reveal group border-t border-charcoal/20 py-7 md:py-9"
@@ -108,7 +109,7 @@ export default function Home() {
                   <span className="shrink-0 text-[11px] uppercase tracking-[0.18em] text-warm-gray">PGC {useCase.room}</span>
                 </div>
                 <p className="mt-4 max-w-xl text-[15px] leading-[1.85] text-charcoal/70">{useCase.body}</p>
-              </a>
+              </SiteLink>
             ))}
           </div>
         </Container>
